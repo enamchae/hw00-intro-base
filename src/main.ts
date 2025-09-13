@@ -71,7 +71,7 @@ function main() {
   ]);
 
   // This function will be called every frame
-  function tick() {
+  function tick(now: number) {
     camera.update();
     stats.begin();
     gl.viewport(0, 0, window.innerWidth, window.innerHeight);
@@ -87,7 +87,7 @@ function main() {
       icosphere,
       square,
       cube,
-    ], [controls.color[0] / 255, controls.color[1] / 255, controls.color[2] / 255, 1]);
+    ], [controls.color[0] / 255, controls.color[1] / 255, controls.color[2] / 255, 1], now);
     stats.end();
 
     // Tell the browser to call `tick` again whenever it renders a new frame
@@ -105,7 +105,7 @@ function main() {
   camera.updateProjectionMatrix();
 
   // Start the render loop
-  tick();
+  requestAnimationFrame(tick);
 }
 
 main();
