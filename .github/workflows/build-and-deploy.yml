@@ -24,6 +24,8 @@ jobs:
           key: ${{ runner.os }}-build-${{ hashFiles('**/package-lock.json') }}
 
       - name: Install and Build 🔧
+        env:
+          NODE_OPTIONS: --openssl-legacy-provider
         run: |
           npm ci
           export NODE_ENV=production
